@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rumba Liguria</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Rumba Liguria Logo" />
+      <h1>Rumba Liguria</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#services">Servizi</a></li>
+        <li><a href="#contact">Contatti</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Benvenuti a Rumba Liguria</h1>
+      <p>Eleganza e passione in ogni evento</p>
+      <a href="#contact" class="button">Contattaci</a>
+    </div>
+  </section>
+
+  <section id="services" class="services">
+    <h2>Servizi</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Organizzazione Eventi</h3>
+        <p>Creiamo eventi su misura per te, con stile e attenzione ai dettagli.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="content">
+    <h2>Contatti</h2>
+    <form id="contactForm">
+      <input type="text" name="nomeCompleto" placeholder="Nome e Cognome" required />
+      <input type="tel" name="telefono" placeholder="Numero di telefono" required pattern="[0-9+\\s()-]{7,15}" title="Inserisci un numero di telefono valido" />
+      <input type="email" name="email" placeholder="La tua email" required />
+      <label for="giornoPrenotazione">Giorno di prenotazione:</label>
+      <select name="giornoPrenotazione" id="giornoPrenotazione" required>
+        <option value="" disabled selected>Seleziona un giorno</option>
+        <option value="Martedì">Martedì</option>
+        <option value="Mercoledì">Mercoledì</option>
+        <option value="Giovedì">Giovedì</option>
+        <option value="Venerdì">Venerdì</option>
+        <option value="Sabato">Sabato</option>
+        <option value="Domenica">Domenica</option>
+      </select>
+      <label for="dataNascita">Data di nascita:</label>
+      <input type="date" name="dataNascita" id="dataNascita" required />
+      <textarea name="messaggio" rows="5" placeholder="Il tuo messaggio" required></textarea>
+      <button type="submit">Invia</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Rumba Liguria. Tutti i diritti riservati.</p>
+    <p>
+      Email: <a href="mailto:rumbaliguria@hotmail.com">rumbaliguria@hotmail.com</a> |
+      Tel: <a href="tel:+393501863148">+39 3501863148</a> |
+      <a href="https://www.instagram.com/rumba_liguria" target="_blank" rel="noopener noreferrer">Instagram</a>
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const nome = this.nomeCompleto.value;
+      const telefono = this.telefono.value;
+      const email = this.email.value;
+      const giorno = this.giornoPrenotazione.value;
+      const dataNascita = this.dataNascita.value;
+      const messaggio = this.messaggio.value;
+
+      const bodyMessage = `
+        Giorno di prenotazione: ${giorno}
+        Data di nascita: ${dataNascita}
+        Messaggio: ${messaggio}
+        Email: ${email}
+        Telefono: ${telefono}
+      `;
+
+      const mailtoLink = `mailto:rumbaliguria@hotmail.com?subject=Prenotazione da ${encodeURIComponent(nome)}&body=${encodeURIComponent(bodyMessage)}`;
+      window.location.href = mailtoLink;
+    });
+  </script>
+</body>
+</html>
