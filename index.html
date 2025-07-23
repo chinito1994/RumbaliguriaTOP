@@ -41,12 +41,13 @@
 
   <section id="contact" class="content">
     <h2>Contatti</h2>
-    <form id="contactForm">
+    <form action=https://formspree.io/f/mwpqlrrp method="POST">
       <input type="text" name="nomeCompleto" placeholder="Nome e Cognome" required />
-      <input type="tel" name="telefono" placeholder="Numero di telefono" required pattern="[0-9+\\s()-]{7,15}" title="Inserisci un numero di telefono valido" />
+      <input type="tel" name="telefono" placeholder="Numero di telefono" required pattern="[0-9+\s()-]{7,15}" title="Inserisci un numero valido" />
       <input type="email" name="email" placeholder="La tua email" required />
+
       <label for="giornoPrenotazione">Giorno di prenotazione:</label>
-      <select name="giornoPrenotazione" id="giornoPrenotazione" required>
+      <select name="giornoPrenotazione" required>
         <option value="" disabled selected>Seleziona un giorno</option>
         <option value="Martedì">Martedì</option>
         <option value="Mercoledì">Mercoledì</option>
@@ -55,9 +56,15 @@
         <option value="Sabato">Sabato</option>
         <option value="Domenica">Domenica</option>
       </select>
+
       <label for="dataNascita">Data di nascita:</label>
-      <input type="date" name="dataNascita" id="dataNascita" required />
+      <input type="date" name="dataNascita" required />
+
       <textarea name="messaggio" rows="5" placeholder="Il tuo messaggio" required></textarea>
+
+      <input type="hidden" name="_replyto" value="rumbaliguria@hotmail.com" />
+      <input type="hidden" name="_subject" value="Nuova prenotazione da Rumba Liguria" />
+
       <button type="submit">Invia</button>
     </form>
   </section>
@@ -70,28 +77,5 @@
       <a href="https://www.instagram.com/rumba_liguria" target="_blank" rel="noopener noreferrer">Instagram</a>
     </p>
   </footer>
-
-  <script>
-    document.getElementById('contactForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      const nome = this.nomeCompleto.value;
-      const telefono = this.telefono.value;
-      const email = this.email.value;
-      const giorno = this.giornoPrenotazione.value;
-      const dataNascita = this.dataNascita.value;
-      const messaggio = this.messaggio.value;
-
-      const bodyMessage = `
-        Giorno di prenotazione: ${giorno}
-        Data di nascita: ${dataNascita}
-        Messaggio: ${messaggio}
-        Email: ${email}
-        Telefono: ${telefono}
-      `;
-
-      const mailtoLink = `mailto:rumbaliguria@hotmail.com?subject=Prenotazione da ${encodeURIComponent(nome)}&body=${encodeURIComponent(bodyMessage)}`;
-      window.location.href = mailtoLink;
-    });
-  </script>
 </body>
 </html>
